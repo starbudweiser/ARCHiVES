@@ -1,0 +1,4 @@
+.build/
+*.app
+PASSATION_*.md
+.DS_Store
