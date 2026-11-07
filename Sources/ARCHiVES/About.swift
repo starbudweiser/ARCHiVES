@@ -10,7 +10,7 @@ enum About {
 
     static func show() {
         if window == nil { window = makeWindow() }
-        window?.socleCenter()
+        window?.updaterCenter()
         window?.present()
     }
 

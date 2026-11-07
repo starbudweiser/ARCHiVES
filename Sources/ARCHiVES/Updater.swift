@@ -424,6 +424,8 @@ final class UpdateEngine: ObservableObject {
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = text
+        alert.layout()
+        alert.window.updaterCenter()
         alert.runModal()
     }
 

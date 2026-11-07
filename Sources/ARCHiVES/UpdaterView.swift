@@ -22,7 +22,7 @@ final class UpdateWindowController: NSObject, NSWindowDelegate {
         guard let window else { return }
         window.title = Updater.text("title", lang: engine.currentLang)
         window.contentView = NSHostingView(rootView: UpdateView(engine: engine, plan: plan, close: { [weak self] in self?.window?.close() }))
-        window.socleCenter()
+        window.updaterCenter()
         NSApp.activate()
         window.orderFrontRegardless()
         window.makeKeyAndOrderFront(nil)
@@ -150,5 +150,15 @@ struct UpdateView: View {
         default:
             EmptyView()
         }
+    }
+}
+
+extension NSWindow {
+    /// Centre la fenêtre sur la fenêtre de l'appli (la fenêtre principale, sinon une autre fenêtre visible), où qu'elle soit à l'écran ;
+    /// sans fenêtre d'appli visible, au centre de l'écran du pointeur.
+    @MainActor func updaterCenter() {
+        let candidates = NSApp.windows.filter { $0 !== self && $0.isVisible && $0.styleMask.contains(.titled) && !($0 is NSPanel) }
+        guard let host = candidates.first(where: { $0.isKeyWindow || $0.isMainWindow }) ?? candidates.first else { socleCenter(); return }
+        setFrameOrigin(NSPoint(x: host.frame.midX - frame.width / 2, y: host.frame.midY - frame.height / 2))
     }
 }
