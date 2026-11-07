@@ -28,11 +28,11 @@ plist = {
          "UTTypeTagSpecification": {"public.filename-extension": ["7z"], "public.mime-type": ["application/x-7z-compressed"]}},
     ],
     "NSServices": [
-        {"NSMenuItem": {"default": "Extract"}, "NSMessage": "extractService", "NSPortName": "ARCHiVES",
+        {"NSMenuItem": {"default": "Extraire ARCHiVE"}, "NSMessage": "extractService", "NSPortName": "ARCHiVES",
          "NSSendFileTypes": ["public.archive"]},
-        {"NSMenuItem": {"default": "Create an ARCHiVE"}, "NSMessage": "createService", "NSPortName": "ARCHiVES",
+        {"NSMenuItem": {"default": "Créer une ARCHiVE"}, "NSMessage": "createService", "NSPortName": "ARCHiVES",
          "NSSendFileTypes": ["public.item"]},
-        {"NSMenuItem": {"default": "Create a protected ARCHiVE…"}, "NSMessage": "createProtectedService", "NSPortName": "ARCHiVES",
+        {"NSMenuItem": {"default": "Créer une ARCHiVE protégée…"}, "NSMessage": "createProtectedService", "NSPortName": "ARCHiVES",
          "NSSendFileTypes": ["public.item"]},
     ],
 }

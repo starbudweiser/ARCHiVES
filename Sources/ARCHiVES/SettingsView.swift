@@ -69,7 +69,7 @@ struct SettingsView: View {
                         Button(L("DÉFINIR PAR DÉFAUT")) { defaultsMessage = setDefaultHandler() }.buttonStyle(SocleButtonStyle(.primary)).fixedSize()
                         if !defaultsMessage.isEmpty { Text(defaultsMessage).socle(Socle.T.meta).foregroundStyle(Socle.C.success) }
                     }
-                    Text(L("Clic droit sur un ou plusieurs fichiers, menu Services : « Décompresser », « Créer une ARCHiVE ». S'ils manquent, activez-les dans Réglages Système › Clavier › Raccourcis clavier › Services."))
+                    Text(L("Clic droit sur un ou plusieurs fichiers, menu Services : « Extraire ARCHiVE », « Créer une ARCHiVE ». S'ils manquent, activez-les dans Réglages Système › Clavier › Raccourcis clavier › Services."))
                         .socle(Socle.T.meta).foregroundStyle(Socle.C.textMuted)
                 }
                 card(L("Mises à jour")) {

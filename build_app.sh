@@ -25,11 +25,11 @@ cp "$ROOT/assets/icon.icns" "$APP/Contents/Resources/icon.icns"
 cp "$SEVENZ" "$APP/Contents/Resources/7zz"
 python3 "$ROOT/make_info_plist.py" "$APP/Contents/Info.plist" "$VERSION"
 # Titres des Services du Finder (clic droit › Services), par langue
-write_strings() { mkdir -p "$APP/Contents/Resources/$1.lproj"; printf '"Extract" = "%s";\n"Create an ARCHiVE" = "%s";\n"Create a protected ARCHiVE…" = "%s";\n' "$2" "$3" "$4" | iconv -f UTF-8 -t UTF-16 > "$APP/Contents/Resources/$1.lproj/InfoPlist.strings"; }
-write_strings fr "Décompresser" "Créer une ARCHiVE" "Créer une ARCHiVE protégée…"
-write_strings en "Extract" "Create an ARCHiVE" "Create a protected ARCHiVE…"
-write_strings it "Decomprimi" "Crea un ARCHiVE" "Crea un ARCHiVE protetto…"
-write_strings es "Descomprimir" "Crear un ARCHiVE" "Crear un ARCHiVE protegido…"
+write_strings() { mkdir -p "$APP/Contents/Resources/$1.lproj"; printf '"Extraire ARCHiVE" = "%s";\n"Créer une ARCHiVE" = "%s";\n"Créer une ARCHiVE protégée…" = "%s";\n' "$2" "$3" "$4" | iconv -f UTF-8 -t UTF-16 > "$APP/Contents/Resources/$1.lproj/InfoPlist.strings"; }
+write_strings fr "Extraire ARCHiVE" "Créer une ARCHiVE" "Créer une ARCHiVE protégée…"
+write_strings en "Extract ARCHiVE" "Create an ARCHiVE" "Create a protected ARCHiVE…"
+write_strings it "Estrai ARCHiVE" "Crea un ARCHiVE" "Crea un ARCHiVE protetto…"
+write_strings es "Extraer ARCHiVE" "Crear un ARCHiVE" "Crear un ARCHiVE protegido…"
 
 SIGN_APP="$ROOT/../../../../SKYRIM/TOOLS/MAC/_tools/sign_app.sh"
 [ -x "$SIGN_APP" ] || SIGN_APP="/Volumes/SKYRIM/TOOLS/MAC/_tools/sign_app.sh"
