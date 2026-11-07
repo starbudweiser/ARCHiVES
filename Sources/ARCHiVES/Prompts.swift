@@ -25,7 +25,7 @@ enum Prompts {
         alert.addButton(withTitle: L("Annuler"))
         alert.window.initialFirstResponder = field
         NSApp.activate()
-        guard alert.runModal() == .alertFirstButtonReturn, !field.stringValue.isEmpty else { return nil }
+        guard alert.runCenteredOnAppWindow() == .alertFirstButtonReturn, !field.stringValue.isEmpty else { return nil }
         return field.stringValue
     }
 
@@ -52,7 +52,7 @@ enum Prompts {
             alert.addButton(withTitle: L("Annuler"))
             alert.window.initialFirstResponder = p1
             NSApp.activate()
-            guard alert.runModal() == .alertFirstButtonReturn else { return nil }
+            guard alert.runCenteredOnAppWindow() == .alertFirstButtonReturn else { return nil }
             if p1.stringValue.isEmpty { message = L("Le mot de passe est vide."); continue }
             if p1.stringValue != p2.stringValue { message = L("Les deux mots de passe sont différents."); continue }
             return (ArchiveFormat.allCases[popup.indexOfSelectedItem], p1.stringValue)
@@ -67,6 +67,6 @@ enum Prompts {
         alert.icon = NSApp.applicationIconImage
         alert.addButton(withTitle: L("Fermer"))
         NSApp.activate()
-        alert.runModal()
+        alert.runCenteredOnAppWindow()
     }
 }

@@ -162,3 +162,19 @@ extension NSWindow {
         setFrameOrigin(NSPoint(x: host.frame.midX - frame.width / 2, y: host.frame.midY - frame.height / 2))
     }
 }
+
+extension NSAlert {
+    /// Comme `runModal()`, mais centrée sur la fenêtre de l'appli : `runModal()` replace lui-même l'alerte dans le tiers haut de l'écran.
+    @MainActor @discardableResult func runCenteredOnAppWindow() -> NSApplication.ModalResponse {
+        layout()
+        window.updaterCenter()
+        // L'alerte se replace à son affichage : on recentre au tour de boucle suivant, une fois la fenêtre à l'écran.
+        for delay in [0.0, 0.05, 0.2] {
+            let t = Timer(timeInterval: delay, repeats: false) { [weak self] _ in MainActor.assumeIsolated { self?.window.updaterCenter() } }
+            RunLoop.main.add(t, forMode: .common)
+        }
+        let response = NSApp.runModal(for: window)
+        window.orderOut(nil)
+        return response
+    }
+}
