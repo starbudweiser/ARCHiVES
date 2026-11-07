@@ -61,12 +61,13 @@ public enum SevenZip {
     }
 
     /// Crée une archive protégée. 7z : noms de fichiers chiffrés aussi ; zip : AES-256.
-    static func create(_ sources: [URL], at output: URL, format: ArchiveFormat, password: String, cancel: CancelFlag?, progress: ((Double) -> Void)?) throws {
+    static func create(_ sources: [URL], at output: URL, format: ArchiveFormat, password: String, level: Int = 5, cancel: CancelFlag?, progress: ((Double) -> Void)?) throws {
         var args = ["a", "-y", "-bsp1", "-bso0", "-bse1", "-snl", "-xr!.DS_Store"]
         switch format {
         case .zip: args += ["-tzip", "-mem=AES256"]
         case .sevenZip: args += ["-t7z", "-mhe=on"]
         }
+        args.append("-mx=\(level)")
         args.append("-p" + password)
         args.append(output.path)
         // chemins relatifs au dossier parent commun : l'archive contient « nom/… », pas le chemin complet

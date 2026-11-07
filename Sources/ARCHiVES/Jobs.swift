@@ -73,7 +73,7 @@ final class JobCenter {
                     created = try Self.runExtract(url, prefs: prefs, cancel: cancel, progress: progress)
                 case .create(let sources, let fmt, let pw):
                     let out = Compressor.outputURL(for: sources, format: fmt, multiName: L("Archive"))
-                    try Compressor.create(sources, at: out, format: fmt, password: pw, cancel: cancel, progress: progress)
+                    try Compressor.create(sources, at: out, format: fmt, password: pw, level: prefs.compressionLevel, cancel: cancel, progress: progress)
                     created = out
                 }
             } catch ArchiveError.cancelled {

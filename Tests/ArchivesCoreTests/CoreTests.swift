@@ -54,3 +54,21 @@ final class I18nTests: XCTestCase {
         for (k, v) in translations { XCTAssertEqual(v.count, 3, k); XCTAssertFalse(v.contains(""), k) }
     }
 }
+
+final class LevelTests: XCTestCase {
+    func testLevelsChangeSize() throws {
+        let d = FileManager.default.temporaryDirectory.appendingPathComponent("lvl-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: d, withIntermediateDirectories: true); defer { try? FileManager.default.removeItem(at: d) }
+        let f = d.appendingPathComponent("big.txt")
+        try String(repeating: "abcdefghij klmnop\n", count: 200_000).write(to: f, atomically: true, encoding: .utf8)
+        func size(_ fmt: ArchiveFormat, _ lvl: Int, pw: String? = nil) throws -> Int {
+            let out = d.appendingPathComponent("o-\(fmt.rawValue)-\(lvl)-\(pw != nil).\(fmt.ext)")
+            try Compressor.create([f], at: out, format: fmt, password: pw, level: lvl, cancel: CancelFlag(), progress: { _ in })
+            return try FileManager.default.attributesOfItem(atPath: out.path)[.size] as! Int
+        }
+        for fmt in ArchiveFormat.allCases {
+            XCTAssertGreaterThan(try size(fmt, 0), try size(fmt, 9) * 5, "\(fmt)")
+            XCTAssertGreaterThan(try size(fmt, 0, pw: "x"), try size(fmt, 9, pw: "x") * 5, "\(fmt) pw")
+        }
+    }
+}

@@ -13,11 +13,11 @@ public enum Compressor {
         return NameSimplifier.unique(base, in: parent, ext: format.ext)
     }
 
-    public static func create(_ sources: [URL], at output: URL, format: ArchiveFormat, password: String?,
+    public static func create(_ sources: [URL], at output: URL, format: ArchiveFormat, password: String?, level: Int = 5,
                               cancel: CancelFlag, progress: @escaping (Double) -> Void) throws {
         precondition(!sources.isEmpty)
         if let password, !password.isEmpty {
-            try SevenZip.create(sources, at: output, format: format, password: password, cancel: cancel, progress: progress)
+            try SevenZip.create(sources, at: output, format: format, password: password, level: level, cancel: cancel, progress: progress)
             return
         }
         let fm = FileManager.default
@@ -42,8 +42,12 @@ public enum Compressor {
         defer { archive_write_free(a); archive_read_free(disk) }
         archive_read_disk_set_symlink_physical(disk)
         switch format {
-        case .zip: archive_write_set_format_zip(a); archive_write_set_options(a, "zip:compression=deflate")
-        case .sevenZip: archive_write_set_format_7zip(a); archive_write_set_options(a, "compression=lzma2")
+        case .zip:
+            archive_write_set_format_zip(a)
+            archive_write_set_options(a, level == 0 ? "zip:compression=store" : "zip:compression=deflate,zip:compression-level=\(level)")
+        case .sevenZip:
+            archive_write_set_format_7zip(a)
+            archive_write_set_options(a, level == 0 ? "compression=store" : "compression=lzma2,compression-level=\(level)")
         }
         var ok = false
         defer { if !ok { try? fm.removeItem(at: output) } }

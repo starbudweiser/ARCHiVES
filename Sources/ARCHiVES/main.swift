@@ -55,9 +55,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             let w = NSWindow(contentRect: .zero, styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
             w.title = L("Réglages")
             w.isReleasedWhenClosed = false
-            w.contentView = NSHostingView(rootView: SettingsView())
+            let host = NSHostingView(rootView: SettingsView())
+            w.contentView = host
             w.delegate = self
-            w.setContentSize(NSSize(width: 560, height: 640))
+            w.setContentSize(host.fittingSize)
             settingsWindow = w
         }
         settingsWindow?.socleCenter()

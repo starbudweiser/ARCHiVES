@@ -12,6 +12,8 @@ public struct Prefs: Sendable {
     public var flattenSingleRoot = true
     public var revealAfter = false
     public var defaultFormat = ArchiveFormat.zip
+    /// 0 = aucune, 1 = rapide, 5 = normal, 9 = maximale
+    public var compressionLevel = 5
 
     public init() {}
     static let d = UserDefaults.standard
@@ -23,6 +25,7 @@ public struct Prefs: Sendable {
         if d.object(forKey: "flattenSingleRoot") != nil { p.flattenSingleRoot = d.bool(forKey: "flattenSingleRoot") }
         if d.object(forKey: "revealAfter") != nil { p.revealAfter = d.bool(forKey: "revealAfter") }
         if let f = d.string(forKey: "defaultFormat"), let fmt = ArchiveFormat(rawValue: f) { p.defaultFormat = fmt }
+        if d.object(forKey: "compressionLevel") != nil { p.compressionLevel = max(0, min(9, d.integer(forKey: "compressionLevel"))) }
         return p
     }
 }
