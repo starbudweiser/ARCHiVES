@@ -1,29 +1,25 @@
 <!-- notes:en -->
-## First release
+## 1.0.1
 
-- Extracts ZIP, RAR, 7z, TAR, GZ… into a folder named after the archive, next to it.
-- Passwords for ZIP, 7z and RAR (extraction) and for ZIP/7z creation.
-- Finder Services: Extract, Create an ARCHiVE, Create a protected ARCHiVE.
-- Compression level setting.
+- Added an MIT license and a fuller README.
+- The About window now mentions the DESKTOP MAC TOOLKIT.
+- Shared update tools synchronized.
 <!-- notes:fr -->
-## Première version
+## 1.0.1
 
-- Extrait ZIP, RAR, 7z, TAR, GZ… dans un dossier du nom de l'archive, à côté d'elle.
-- Mots de passe pour ZIP, 7z et RAR (extraction) et pour la création de ZIP/7z.
-- Services du Finder : Extraire, Créer une ARCHiVE, Créer une ARCHiVE protégée.
-- Réglage du niveau de compression.
+- Ajout d'une licence MIT et d'un README plus complet.
+- La fenêtre « À propos » mentionne le DESKTOP MAC TOOLKIT.
+- Outils de mise à jour communs synchronisés.
 <!-- notes:es -->
-## Primera versión
+## 1.0.1
 
-- Extrae ZIP, RAR, 7z, TAR, GZ… en una carpeta con el nombre del archivo, a su lado.
-- Contraseñas para ZIP, 7z y RAR (extracción) y para crear ZIP/7z.
-- Servicios del Finder: Extraer, Crear un ARCHiVE, Crear un ARCHiVE protegido.
-- Ajuste del nivel de compresión.
+- Se añade una licencia MIT y un README más completo.
+- La ventana « Acerca de » menciona el DESKTOP MAC TOOLKIT.
+- Herramientas de actualización comunes sincronizadas.
 <!-- notes:it -->
-## Prima versione
+## 1.0.1
 
-- Estrae ZIP, RAR, 7z, TAR, GZ… in una cartella con il nome dell'archivio, accanto ad esso.
-- Password per ZIP, 7z e RAR (estrazione) e per la creazione di ZIP/7z.
-- Servizi del Finder: Estrai, Crea un ARCHiVE, Crea un ARCHiVE protetto.
-- Impostazione del livello di compressione.
+- Aggiunta una licenza MIT e un README più completo.
+- La finestra « Informazioni » menziona il DESKTOP MAC TOOLKIT.
+- Strumenti di aggiornamento comuni sincronizzati.
 <!-- notes:end -->

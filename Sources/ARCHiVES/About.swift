@@ -50,6 +50,7 @@ enum About {
             label(L("Extraction et compression d'archives, légère et intégrée au Finder.")),
             label(L("Starbudweiser & Claude Code (Anthropic)"), bold: true),
             label(L("Licence MIT. © 2026 Starbudweiser.")),
+            label(L("Fait partie du DESKTOP MAC TOOLKIT.")),
             label(L("Fourni en l'état, sans garantie."), secondary: true),
             label(L("Inspiré de The Unarchiver, sans lien avec ses auteurs. Utilise libarchive et 7-Zip."), secondary: true),
         ]

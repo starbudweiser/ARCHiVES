@@ -58,6 +58,7 @@ let translations: [String: [String]] = [
     "Extraction et compression d'archives, légère et intégrée au Finder.": ["Lightweight archive extraction and compression, built into the Finder.", "Estrazione e compressione di archivi, leggera e integrata nel Finder.", "Extracción y compresión de archivos, ligera e integrada en el Finder."],
     "Starbudweiser & Claude Code (Anthropic)": ["Starbudweiser & Claude Code (Anthropic)", "Starbudweiser & Claude Code (Anthropic)", "Starbudweiser & Claude Code (Anthropic)"],
     "Licence MIT. © 2026 Starbudweiser.": ["MIT License. © 2026 Starbudweiser.", "Licenza MIT. © 2026 Starbudweiser.", "Licencia MIT. © 2026 Starbudweiser."],
+    "Fait partie du DESKTOP MAC TOOLKIT.": ["Part of the DESKTOP MAC TOOLKIT.", "Fa parte del DESKTOP MAC TOOLKIT.", "Forma parte del DESKTOP MAC TOOLKIT."],
     "Fourni en l'état, sans garantie.": ["Provided as is, without warranty.", "Fornito così com'è, senza garanzia.", "Se proporciona tal cual, sin garantía."],
     "Inspiré de The Unarchiver, sans lien avec ses auteurs. Utilise libarchive et 7-Zip.": ["Inspired by The Unarchiver, unrelated to its authors. Uses libarchive and 7-Zip.", "Ispirato a The Unarchiver, senza legami con i suoi autori. Usa libarchive e 7-Zip.", "Inspirado en The Unarchiver, sin relación con sus autores. Usa libarchive y 7-Zip."],
 ]
