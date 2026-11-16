@@ -1,25 +1,16 @@
 <!-- notes:en -->
-## 1.0.1
+## 1.0.2
 
-- Added an MIT license and a fuller README.
-- The About window now mentions the DESKTOP MAC TOOLKIT.
-- Shared update tools synchronized.
+- A progress gauge now appears on the archive's icon in the Finder while it is being extracted.
 <!-- notes:fr -->
-## 1.0.1
+## 1.0.2
 
-- Ajout d'une licence MIT et d'un README plus complet.
-- La fenêtre « À propos » mentionne le DESKTOP MAC TOOLKIT.
-- Outils de mise à jour communs synchronisés.
+- Une jauge de progression apparaît sur l'icône de l'archive dans le Finder pendant son extraction.
 <!-- notes:es -->
-## 1.0.1
+## 1.0.2
 
-- Se añade una licencia MIT y un README más completo.
-- La ventana « Acerca de » menciona el DESKTOP MAC TOOLKIT.
-- Herramientas de actualización comunes sincronizadas.
+- Aparece un indicador de progreso en el icono del archivo en el Finder mientras se extrae.
 <!-- notes:it -->
-## 1.0.1
+## 1.0.2
 
-- Aggiunta una licenza MIT e un README più completo.
-- La finestra « Informazioni » menziona il DESKTOP MAC TOOLKIT.
-- Strumenti di aggiornamento comuni sincronizzati.
-<!-- notes:end -->
+- Un indicatore di avanzamento appare sull'icona dell'archivio nel Finder durante l'estrazione.

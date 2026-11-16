@@ -4,7 +4,7 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 APP_NAME="ARCHiVES"
-VERSION="1.0.1"
+VERSION="1.0.2"
 INSTALL_DIR="${ARCHIVES_INSTALL_DIR:-$HOME/Applications/Applications Personnelles}"
 APP="$ROOT/$APP_NAME.app"
 SEVENZ="$(readlink -f /opt/homebrew/bin/7zz 2>/dev/null || true)"
