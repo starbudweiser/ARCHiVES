@@ -63,7 +63,20 @@ final class JobCenter {
         panelTimer = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] _ in
             MainActor.assumeIsolated { self?.showPanel() }
         }
-        let progress: (Double) -> Void = { [weak model] f in DispatchQueue.main.async { model?.fraction = f } }
+        // Jauge sur l'icône de l'archive dans le Finder (NSProgress de type fichier publié).
+        var fileProgress: Progress?
+        if case .extract(let u) = job {
+            let p = Progress(totalUnitCount: 1000)
+            p.kind = .file
+            p.setUserInfoObject(Progress.FileOperationKind.decompressingAfterDownloading, forKey: .fileOperationKindKey)
+            p.setUserInfoObject(u, forKey: .fileURLKey)
+            p.isCancellable = false; p.isPausable = false
+            p.publish()
+            fileProgress = p
+        }
+        let progress: (Double) -> Void = { [weak model] f in
+            DispatchQueue.main.async { model?.fraction = f; fileProgress?.completedUnitCount = Int64(f * 1000) }
+        }
         DispatchQueue.global(qos: .utility).async { [weak self] in
             var failure: (String, String)?
             var created: URL?
@@ -84,6 +97,8 @@ final class JobCenter {
                            msg + "\n" + L("Vérifiez que l'archive n'est pas corrompue et que le dossier est modifiable."))
             }
             DispatchQueue.main.async {
+                fileProgress?.completedUnitCount = 1000
+                fileProgress?.unpublish()
                 if let failure { self?.failures.append(failure) }
                 if let created, case .extract(let url) = job {
                     if prefs.trashAfter { for v in Volumes.all(from: url) { try? FileManager.default.trashItem(at: v, resultingItemURL: nil) } }
