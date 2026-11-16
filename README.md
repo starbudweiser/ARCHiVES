@@ -8,6 +8,8 @@ ARCHiVES is made by Starbudweiser & Claude Code (Anthropic). Part of the **DESKT
 
 ARCHiVES is a small app inspired by The Unarchiver, with no link to its authors.
 
+![The ARCHiVES settings window, showing the ZIP/7Z default format and the compression level selector (none, fast, normal, maximum).](docs/screenshot.png)
+
 ## What it does
 
 - Double-click an archive (ZIP, RAR, 7z, TAR, GZ, BZ2, XZ…) and it is extracted into a folder named after the file, next to it.
