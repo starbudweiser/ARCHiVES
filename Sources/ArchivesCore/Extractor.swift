@@ -44,7 +44,7 @@ public enum Extractor {
     }
 
     static func lastError(_ a: OpaquePointer?) -> String {
-        guard let a, let c = archive_error_string(a) else { return "erreur inconnue" }
+        guard let a, let c = archive_error_string(a) else { return L("erreur inconnue") }
         return String(cString: c)
     }
 

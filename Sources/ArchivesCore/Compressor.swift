@@ -67,7 +67,7 @@ public enum Compressor {
             if archive_write_header(a, e) < ARCHIVE_WARN { throw ArchiveError.failed(Extractor.lastError(a)) }
             let isReg = (archive_entry_filetype(e) & mode_t(AE_IFMT)) == mode_t(AE_IFREG)
             if isReg, archive_entry_size(e) > 0 {
-                guard let fh = try? FileHandle(forReadingFrom: url) else { throw ArchiveError.failed("Lecture impossible : \(rel)") }
+                guard let fh = try? FileHandle(forReadingFrom: url) else { throw ArchiveError.failed(L("Lecture impossible : {name}", ["name": rel])) }
                 defer { try? fh.close() }
                 while true {
                     if cancel.isSet { throw ArchiveError.cancelled }

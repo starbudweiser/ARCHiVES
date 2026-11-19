@@ -13,7 +13,7 @@ public enum SevenZip {
     struct Result { var status: Int32; var output: String }
 
     static func run(_ args: [String], cwd: URL? = nil, cancel: CancelFlag?, progress: ((Double) -> Void)? = nil) throws -> Result {
-        guard let bin = binary else { throw ArchiveError.failed("7zz introuvable") }
+        guard let bin = binary else { throw ArchiveError.failed(L("7zz introuvable")) }
         let p = Process()
         p.executableURL = bin
         p.arguments = args

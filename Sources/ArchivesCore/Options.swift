@@ -37,9 +37,9 @@ public enum ArchiveError: Error, LocalizedError, Equatable {
     case failed(String)
     public var errorDescription: String? {
         switch self {
-        case .needsPassword: return "password required"
-        case .wrongPassword: return "wrong password"
-        case .cancelled: return "cancelled"
+        case .needsPassword: return L("mot de passe requis")
+        case .wrongPassword: return L("mot de passe incorrect")
+        case .cancelled: return L("annulé")
         case .failed(let m): return m
         }
     }
